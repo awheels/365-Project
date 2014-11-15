@@ -1,0 +1,174 @@
+.container-fluid {
+  padding: 0 0;
+}
+
+#gallery-background {
+  padding-left:15px;
+  padding-right:15px;
+  position: relative;
+  background-color: #f0efef;
+  z-index:2;
+}
+
+#header {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  margin-top: -22px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(35, 35, 35);
+  z-index:1;
+  /*  background: url(../images/HeroImage2.jpg) no-repeat center center fixed; 
+*/}
+
+#photo-streak-border {
+  border: white solid 10px;
+  display: inline-block;
+  position:fixed;
+  top:180px;
+  left:50%;
+  margin-left:-186px;
+}
+
+#photo-streak-text {
+  display:inline-block;
+  margin-left:15px;
+}
+
+#photo-streak-text #streak-text-1 {
+  letter-spacing: 0.05em;
+  color:white;
+  text-transform: uppercase;
+  margin:0px 0px;
+}
+
+#photo-streak-text #streak-text-2 {
+  letter-spacing: 0.40em;
+  color:white;
+  text-transform: uppercase;
+  margin:0px 0px;
+}
+
+#photo-streak-text #streak-text-3 {
+  letter-spacing: 0.22em;
+  color:white;
+  text-transform: uppercase;
+  margin:0px 0px;
+}
+
+#photo-streak-count {
+  display:inline-block;
+}
+
+#photo-streak-count h2 {
+  font-size:110px;
+  font-weight: 700;
+  color:white;
+  letter-spacing: 0.05em;
+  margin-top: -15px;
+  margin-bottom: -10px;
+  margin-right: 0px;
+}
+
+#header #logo h2 {
+  top: 35px;
+  position: fixed;
+  left: 41%;
+  color:white;
+  text-transform: uppercase;
+  left:50%;
+  margin-left:-143px;
+}
+
+
+#header h2 span {
+  top: 70px;
+  position: fixed;
+  left: 40%;
+}
+
+#header p {
+  top: 90px;
+  position: fixed;
+  left: 29%;
+  color: white;
+  text-align: center;
+  left:50%;
+  margin-left:-276px;
+}
+
+#social-icons {
+  top:350px;
+  height:70px;
+  width:100%;
+  padding-left:150px;
+  padding-right:50px;
+  background-color:rgb(35, 35, 35);
+  display: flex;
+  justify-content: space-between;
+}
+
+#social-icons-left {
+  top:205px;
+  position:fixed;
+  left:25%;
+  margin-left:-64px;
+}
+
+#social-icons-right {
+  top:205px;
+  position:fixed;
+  left:75%;
+  margin-left:-64px;
+
+}
+
+#social-icons-left .fa {
+  color:white;
+  margin-right:5px;
+}
+
+#social-icons-right .fa {
+  color:white;
+  margin-right:5px;
+}
+
+.month h2 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.photo-main-box {
+  width: 29.3%;
+  height: auto;
+  margin-right: 2%;
+  margin-left: 2%;
+  float: left;
+  position: relative;
+  padding:0;
+}
+
+.photo {  
+  height: auto;
+  float:left;
+  position:relative;
+  padding: 13%;
+  background-color: white;
+  margin-bottom: 8px;
+}
+
+.photo img {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+.date {
+  text-align: center;
+}
+
+

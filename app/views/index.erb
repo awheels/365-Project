@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div id="header">
+    <div id="logo"><h2>Andrew Wheeler</h2></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra aliquam 
+    <br> 
+    magna, et pretium metus vehicula eu. Phasellus vestibulum diam pharetra augue 
+    <br>
+    imperdiet, ut gravida odio consequat. Integer vehicula dolor nec gravida placerat. Morbi 
+    <br>
+    mollis sodales sapien, a euismod odio dignissim in. </p>
+    <div id="long-logo"></div>
+    <div id="photo-streak-border">
+      <div id="photo-streak-text">
+        <h3 id="streak-text-1">current</h3>
+        <h3 id="streak-text-2">photo</h3>
+        <h3 id="streak-text-3">streak</h3>
+      </div>
+      <div id="photo-streak-count">
+        <h2>232</h2>
+      </div>
+    </div>
+    <div id="social-icons-left">
+      <i class="fa fa-github-square fa-5x"></i>
+      <i class="fa fa-linkedin-square fa-5x"></i>
+    </div>
+    <div id="social-icons-right">
+      <i class="fa fa-twitter-square fa-5x"></i>
+      <i class="fa fa-flickr fa-5x"></i>
+    </div>
+  </div>
+
+
+
+  <div id="gallery-background" class="row">
+    <div class="month">
+      <h2>November</h2>
+      <% @images.each do |image| %>
+        <div class="col-md-4 photo-main-box">
+          <div class="photo">
+            <img src=<%= image.url %>>
+          </div>
+          <div class="date">
+            <h6><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %> </h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
