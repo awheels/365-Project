@@ -2,102 +2,121 @@
   padding: 0 0;
 }
 
+.navbar {
+  padding: 10px 0;
+}
+
+.navbar .navbar-collapse li a {
+  font-family: 'Tahoma', Arial, sans-serif;
+}
+
+.navbar .navbar-brand {
+  text-transform: uppercase;
+  font-size: 50px;
+  color: black;
+  font-family: 'Impact', Arial, sans-serif;
+}
+
+.navbar .navbar-header {
+  margin-left:40px;
+}
+
+.navbar .navbar-collapse {
+  margin-right:50px;
+}
+
 #gallery-background {
   padding-left:15px;
   padding-right:15px;
   position: relative;
   background-color: #f0efef;
-  z-index:2;
+}
+
+body {
+  padding-top: 90px; 
 }
 
 #header {
-  width: 100%;
-  height: 350px;
+  height: 450px;
   overflow: hidden;
-  margin-top: -22px;
+  margin-top: -25px;
+  background: url(../images/InstagramCollage.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: rgb(35, 35, 35);
-  z-index:1;
-  /*  background: url(../images/HeroImage2.jpg) no-repeat center center fixed; 
-*/}
-
-#photo-streak-border {
-  border: white solid 10px;
-  display: inline-block;
-  position:fixed;
-  top:180px;
-  left:50%;
-  margin-left:-186px;
+  text-align: center;
 }
 
-#photo-streak-text {
+#time-count {
+  margin-top: 140px;
+}
+
+.year-wrapper {
   display:inline-block;
-  margin-left:15px;
+  width: 200px;
+  height: 200px;
+  background:white;
+  border-radius: 100px;
+  padding-top: 45px;
+  margin: 0px 10px;
+  font-size:20px;
+  font-family: 'Impact', Arial, sans-serif;
 }
 
-#photo-streak-text #streak-text-1 {
-  letter-spacing: 0.05em;
-  color:white;
-  text-transform: uppercase;
-  margin:0px 0px;
+.years {
+  font-size: 100px;
+  line-height: 90px;
 }
 
-#photo-streak-text #streak-text-2 {
-  letter-spacing: 0.40em;
-  color:white;
-  text-transform: uppercase;
-  margin:0px 0px;
-}
-
-#photo-streak-text #streak-text-3 {
-  letter-spacing: 0.22em;
-  color:white;
-  text-transform: uppercase;
-  margin:0px 0px;
-}
-
-#photo-streak-count {
+.month-wrapper {
   display:inline-block;
+  width: 200px;
+  height: 200px;
+  background:white;
+  border-radius: 100px;
+  padding-top: 45px;
+  margin: 0px 10px;
+  font-size:20px;
+  font-family: 'Impact', Arial, sans-serif;
 }
 
-#photo-streak-count h2 {
-  font-size:110px;
-  font-weight: 700;
-  color:white;
-  letter-spacing: 0.05em;
-  margin-top: -15px;
-  margin-bottom: -10px;
-  margin-right: 0px;
+.months {
+  font-size: 100px;
+  line-height:90px;
+}
+
+.day-wrapper {
+  display:inline-block;
+  width: 200px;
+  height: 200px;
+  background:white;
+  border-radius: 100px;
+  padding-top: 45px;
+  margin: 0px 10px;
+  font-size:20px;
+  font-family: 'Impact', Arial, sans-serif;
+}
+
+.days {
+  font-size: 100px;
+  line-height:90px;
 }
 
 #header #logo h2 {
-  top: 35px;
-  position: fixed;
-  left: 41%;
   color:white;
   text-transform: uppercase;
-  left:50%;
-  margin-left:-143px;
 }
 
 
 #header h2 span {
   top: 70px;
-  position: fixed;
   left: 40%;
 }
 
 #header p {
-  top: 90px;
-  position: fixed;
-  left: 29%;
   color: white;
   text-align: center;
-  left:50%;
-  margin-left:-276px;
 }
 
 #social-icons {
@@ -112,18 +131,17 @@
 }
 
 #social-icons-left {
-  top:205px;
-  position:fixed;
-  left:25%;
-  margin-left:-64px;
+  top: 205px;
+  left: 20%;
+  position: absolute;
+  margin-left: -64px;
 }
 
 #social-icons-right {
-  top:205px;
-  position:fixed;
-  left:75%;
-  margin-left:-64px;
-
+  top: 205px;
+  left: 80%;
+  position: absolute;
+  margin-left: -64px;
 }
 
 #social-icons-left .fa {
