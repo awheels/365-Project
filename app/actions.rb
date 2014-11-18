@@ -1,4 +1,14 @@
+helpers do 
+  def projects_first_day 
+    dates = []
+    Image.all.each {|image| dates.push(image.created_at)}
+    return dates.min.to_i
+  end
 
+  def project_length_in_days 
+    (DateTime.now - Time.at(projects_first_day).to_datetime).to_i
+  end
+end
 
 get '/' do
   @images = Image.all

@@ -23,18 +23,22 @@
 <div class="container-fluid">
   <div id="header">
     <div id="time-count">
-      <div class='year-wrapper'>
-        <span class='years'>15</span>
-        <br>
-        years
-      </div>
-      <div class='month-wrapper'>
-        <span class='months'>12</span>
-        <br>
-        months
-      </div>
+      <% if project_length_in_days >= 365 %>
+        <div class='year-wrapper'>
+          <span class='years'><%= project_length_in_days / 365 %></span>
+          <br>
+          years
+        </div>
+      <% end %>
+      <% if project_length_in_days >= 30 %>
+        <div class='month-wrapper'>
+          <span class='months'><%= (project_length_in_days % 365) / 30 %></span>
+          <br>
+          months
+        </div>
+      <% end %>
       <div class='day-wrapper'>
-        <span class='days'>30</span>
+        <span class='days'><%= (project_length_in_days % 365) % 30%> </span>
         <br>
         days
       </div>      
