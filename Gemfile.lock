@@ -51,6 +51,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
     rake (10.1.1)
     ripl (0.7.0)
       bond (~> 0.4.2)
@@ -98,6 +101,7 @@ DEPENDENCIES
   pry
   pry-nav
   puma
+  racksh
   rake
   shotgun
   sinatra
