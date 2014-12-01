@@ -1,17 +1,52 @@
 helpers do 
-  def projects_first_day 
-    dates = []
-    Image.all.each {|image| dates.push(image.created_at)}
-    return dates.min.to_i
+
+
+  def get_year_from_date(date)
+    Time.at(date).strftime("%Y").to_i
   end
 
-  def project_length_in_days 
-    (DateTime.now - Time.at(projects_first_day).to_datetime).to_i
+  def get_month_from_date(date)
+    Time.at(date).strftime("%m").to_i
   end
+
+  def get_day_from_date(date)
+    Time.at(date).strftime("%d").to_i
+  end
+
+  def total_months(date)
+    if get_year_from_date(date) == get_year_from_date(Time.now)
+      return get_month_from_date(Time.now) - get_month_from_date(date)
+    elsif get_month_from_date(Time.now) > get_month_from_date(date)
+      return (get_year_from_date(Time.now) - get_year_from_date(date))*12 + (get_month_from_date(Time.now)-get_month_from_date(date))
+    elsif get_month_from_date(Time.now) < get_month_from_date(date)
+      return ((get_year_from_date(Time.now) - get_year_from_date(date))-1)*12 + (12 - get_month_from_date(date)-get_month_from_date(Time.now))
+    elsif get_month_from_date(Time.now) == get_month_from_date(date)
+      if get_day_from_date(Time.now) >= get_day_from_date(date)
+        return (get_year_from_date(Time.now) - get_year_from_date(date))*12
+      else
+        return ((get_year_from_date(Time.now) - get_year_from_date(date))-1)*12
+      end
+    end
+  end
+
+  def projects_years_months_days(start_date)
+    array = []
+    array << total_months(start_date) / 12   #years
+    array << total_months(start_date) % 12   #months
+    if get_day_from_date(Time.now) > get_day_from_date(start_date) #days
+      array << (get_day_from_date(Time.now) - get_day_from_date(start_date))
+    elsif get_day_from_date(Time.now) < get_day_from_date(start_date)
+      array << ((Date.new((Date.today).year,(Date.today).month-1,-1).mday) - get_day_from_date(start_date)) + get_day_from_date(Time.now)
+    else 
+      array << 0
+    end
+  end
+
 end
 
 get '/' do
   @images = Image.all
+  @months = Image.all_months_and_years
   erb :index
 end
 

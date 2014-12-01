@@ -1,7 +1,3 @@
-.container-fluid {
-  padding: 0 0;
-}
-
 .navbar {
   padding: 10px 0;
 }
@@ -13,7 +9,7 @@
 .navbar .navbar-brand {
   text-transform: uppercase;
   font-size: 50px;
-  color: black;
+  color: #333;
   font-family: 'Impact', Arial, sans-serif;
 }
 
@@ -25,21 +21,25 @@
   margin-right:50px;
 }
 
-#gallery-background {
-  padding-left:15px;
-  padding-right:15px;
+.container-fluid {
+  padding: 0 0;
   position: relative;
-  background-color: #f0efef;
 }
 
 body {
-  padding-top: 90px; 
+  padding-top: 70px;
+}
+
+.row .gallery-background {
+  position:relative;
+  padding-left:15px;
+  padding-right:15px;
+  background-color: #f0efef;
 }
 
 #header {
-  height: 450px;
-  overflow: hidden;
-  margin-top: -25px;
+  position: relative;
+  height: 500px;
   background: url(../images/InstagramCollage.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -48,11 +48,17 @@ body {
   text-align: center;
 }
 
-#time-count {
-  margin-top: 140px;
+#header-contents {
+  position: absolute;
+  top:50%;
+  margin-top:-150px;
+  left:50%;
 }
 
-.year-wrapper {
+#time-count {
+}
+
+#year-wrapper {
   display:inline-block;
   width: 200px;
   height: 200px;
@@ -69,7 +75,7 @@ body {
   line-height: 90px;
 }
 
-.month-wrapper {
+#month-wrapper {
   display:inline-block;
   width: 200px;
   height: 200px;
@@ -86,7 +92,7 @@ body {
   line-height:90px;
 }
 
-.day-wrapper {
+#day-wrapper {
   display:inline-block;
   width: 200px;
   height: 200px;
@@ -119,39 +125,24 @@ body {
   text-align: center;
 }
 
-#social-icons {
-  top:350px;
-  height:70px;
-  width:100%;
-  padding-left:150px;
-  padding-right:50px;
-  background-color:rgb(35, 35, 35);
-  display: flex;
-  justify-content: space-between;
+.social-icons-background {  
+  background-color: white;
+  display: inline-flex;
+  left: 50%;
+  top: 355px;
+  border-radius: 10px;
+  padding: 5px 5px 5px 5px;
+  margin-top:20px;
 }
 
-#social-icons-left {
-  top: 205px;
-  left: 20%;
-  position: absolute;
-  margin-left: -64px;
+.social-icons-background .fa {
+  color:#333;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-#social-icons-right {
-  top: 205px;
-  left: 80%;
-  position: absolute;
-  margin-left: -64px;
-}
-
-#social-icons-left .fa {
-  color:white;
-  margin-right:5px;
-}
-
-#social-icons-right .fa {
-  color:white;
-  margin-right:5px;
+.social-icons-background .fa {
+  color:#333;
 }
 
 .month h2 {
@@ -187,6 +178,20 @@ body {
 
 .date {
   text-align: center;
+}
+
+#filter-box {
+  background-color: black;
+  height: 46px;
+  width: 100%;
+  z-index: 10;
+}
+ 
+#filter-button {
+  position:absolute;
+  margin-top:6px;
+  left:50%;
+  margin-left:-35px;
 }
 
 
