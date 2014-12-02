@@ -15,7 +15,11 @@ helpers do
 
   def total_months(date)
     if get_year_from_date(date) == get_year_from_date(Time.now)
-      return get_month_from_date(Time.now) - get_month_from_date(date)
+      if get_day_from_date(Time.now) >= get_day_from_date(date)
+        return get_month_from_date(Time.now) - get_month_from_date(date)
+      else 
+        return (get_month_from_date(Time.now) - get_month_from_date(date))-1
+      end
     elsif get_month_from_date(Time.now) > get_month_from_date(date)
       return (get_year_from_date(Time.now) - get_year_from_date(date))*12 + (get_month_from_date(Time.now)-get_month_from_date(date))
     elsif get_month_from_date(Time.now) < get_month_from_date(date)
