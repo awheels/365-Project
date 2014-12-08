@@ -1,5 +1,4 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
     <div class="navbar-header">
       <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
         <span class='sr-only'>Toggle navigation</span>
@@ -17,10 +16,9 @@
         <li><a href='#'>Contact</a></li> 
       </ul>
     </div>
-  </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid ">
   <div class="row-fluid" id="header">
     <div id="header-contents">
       <div id="time-count">
@@ -47,9 +45,9 @@
       </div>
       <div class='row-fluid social-icons-background'>
         <a href="https://github.com/awheels"><i class="fa fa-github-square fa-5x"></i></a>
-        <a href="https://ca.linkedin.com/in/andwheeler/"<i class="fa fa-linkedin-square fa-5x"></i></a>
-        <i class="fa fa-twitter-square fa-5x"></i>
-        <i class="fa fa-flickr fa-5x"></i>
+        <a href="https://ca.linkedin.com/in/andwheeler/"><i class="fa fa-linkedin-square fa-5x"></i></a>
+        <a href="https://twitter.com/and_wheeler"><i class="fa fa-twitter-square fa-5x"></i>
+        <i class="fa fa-flickr fa-5x"></i></a>
       </div>
     </div>
   </div>
@@ -75,17 +73,33 @@
       <h2>November</h2>
       <% @images.each do |image| %>
         <div class="col-md-4 photo-main-box">
-          <div class="photo">
-            <img src=<%= image.url %>>
+          <div class="photo" data-imageID=<%=image.id%>>
+            <img  src=<%= image.url %>>
+            <div class="date">
+              <p><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %> </p>
+            </div>
           </div>
-          <div class="date">
-            <h6><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %> </h6>
+        </div>
+        <div id="myModal-<%=image.id%>" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img  src=<%= image.url %>>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
+
 
 
 <script> 
@@ -101,6 +115,14 @@
       fixDiv();
   });
 
+  $(document).ready(function(){
+    $('.photo').click(function(){
+      var imageId = $(this).attr('data-imageID');  
+      $("#myModal-"+imageId).modal('show');
+    });
+  });
+    
+  
   $(document).ready(function(){
     var yearsPresent = $('#year-wrapper').length;
     var monthsPresent = $('#month-wrapper').length;
