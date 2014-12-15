@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111112238) do
+ActiveRecord::Schema.define(version: 20141212135000) do
 
   create_table "images", force: true do |t|
     t.string   "url"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20141111112238) do
     t.string   "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumbnail"
+    t.string   "lowres"
+    t.string   "date"
   end
 
 end

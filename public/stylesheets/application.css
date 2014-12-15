@@ -35,11 +35,9 @@ body.modal-open {
     overflow: visible;
 }
 
-.row .gallery-background {
-  position:relative;
-  padding-left:15px;
-  padding-right:15px;
+#gallery-background {
   background-color: #f0efef;
+  margin-top: 75px;
 }
 
 #header {
@@ -156,7 +154,7 @@ body.modal-open {
   margin-bottom: 20px;
 }
 
-.photo-main-box {
+/*.photo-main-box {
   width: 29.3%;
   height: auto;
   margin-right: 2%;
@@ -164,18 +162,15 @@ body.modal-open {
   float: left;
   position: relative;
   padding:0;
-}
+}*/
 
 .photo {  
   height: auto;
   float:left;
   position:relative;
-  padding-top: 13%;
-  padding-right: 13%;
-  padding-left: 13%;
-  padding-bottom:6%;
+  padding: 13%;
   background-color: white;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .photo img {
@@ -186,20 +181,23 @@ body.modal-open {
 
 .date {
   text-align: center;
+  position: relative;
+  top: -35px;
 }
 
-#filter-box {
+.fixed-filter-box #stick {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  margin-top:71px;
+}
+
+.filter-nav {
+  position:absolute;
   background-color: black;
   height: 46px;
   width: 100%;
   z-index: 10;
-}
- 
-#filter-button {
-  position:absolute;
-  margin-top:6px;
-  left:50%;
-  margin-left:-35px;
 }
 
 .gallery-background .month .photo-main-box .photo .date p {
@@ -235,3 +233,97 @@ body.modal-open {
      padding:15px;
      text-align:center;
 }
+
+.fixed-filter-box .filter-nav ul {
+  left: 50%;
+  position: relative;
+  margin-left: -506px;
+  margin-top: 5px;
+  display:inline-block;
+}
+
+
+.fixed-filter-box .filter-nav ul li a {
+  color:white;
+  font-family: 'Impact', Arial, sans-serif;
+  font-size: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.fixed-filter-box .filter-nav ul li {
+  color:gray;
+  font-family: 'Impact', Arial, sans-serif;
+  font-size: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.nav-active {
+  color:rgb(255, 214, 20) !important;
+  text-decoration: none;
+}
+
+#gallery-background .photo-main-box span {
+  background: rgb(0, 0, 0);
+  color: white;
+  border-radius: 100px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-size: 10px;
+  top: -42px;
+  position: relative;
+  left: 50%;
+  margin-left: -19px;
+  opacity: 0.8;
+}
+
+.modal-body {
+  background-color: black;
+  z-index: 
+}
+
+.modal-body img {
+  max-width:100%;
+}
+
+.modal-footer {
+  text-align: left;
+}
+
+.modal-footer p {
+  display:inline-block;
+}
+
+.modal-footer a {
+  float:right;
+  color: black;
+}
+
+.modal-footer h5 {
+  display:inline-block;
+}
+
+@media only screen and (min-width: 767px) {
+  .modal-dialog {
+    width:500px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #gallery-background .photo-main-box .photo {
+    width:100%;
+  }
+}
+
+.modal-caption {
+  float:left;
+}
+
+.modal-caption .month {
+  display:block;
+}
+
+

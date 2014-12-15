@@ -46,10 +46,11 @@ helpers do
     end
   end
 
-end
 
+end
 get '/' do
-  @images = Image.all
+  # @images = Image.where({month: Time.now.strftime("%m"), year: Time.now.strftime("%Y")})
+  @images = Image.order('date DESC')
   @months = Image.all_months_and_years
   erb :index
 end
@@ -68,10 +69,13 @@ post '/subscriptions' do
   if (hash['data']['tags'].last == 'my365') #&& (Time.now.utc.to_date == Time.at(hash['data']['created_time'].to_i).to_date)
     Image.create(
       url:            hash['data']['images']['standard_resolution']['url'],
+      thumbnail:      hash['data']['images']['thumbnail']['url'],
+      lowres:         hash['data']['images']['low_resolution']['url'],        
       created_time:   hash['data']['created_time'],
       month:          Time.now.strftime("%m"), 
       day:            Time.now.strftime("%d"),
       year:           Time.now.strftime("%Y"),
+      date:           Date.today.to_s,
       caption:        hash['data']['caption']['text'],
       instagram_id:   hash['data']['id'],    
       instagram_link: hash['data']['link'],

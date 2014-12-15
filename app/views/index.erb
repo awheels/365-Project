@@ -1,21 +1,21 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="navbar-header">
-      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
-        <span class='sr-only'>Toggle navigation</span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-      </button>
-      <a class="navbar-brand" href="#">Andrew Wheeler</a>
-    </div>
-    <div class='navbar-collapse collapse'>
-      <ul class='nav navbar-nav navbar-right'>
-        <li class='active'><a href='#'>Home</a></li>
-        <li><a href='#'>About</a></li>
-        <li><a href='#'>Gallery</a></li> 
-        <li><a href='#'>Contact</a></li> 
-      </ul>
-    </div>
+  <div class="navbar-header">
+    <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+      <span class='sr-only'>Toggle navigation</span>
+      <span class='icon-bar'></span>
+      <span class='icon-bar'></span>
+      <span class='icon-bar'></span>
+    </button>
+    <a class="navbar-brand" href="#">Andrew Wheeler</a>
+  </div>
+  <div class='navbar-collapse collapse'>
+    <ul class='nav navbar-nav navbar-right'>
+      <li class='active'><a href='#'>Home</a></li>
+      <li><a href='#'>About</a></li>
+      <li><a href='#'>Gallery</a></li> 
+      <li><a href='#'>Contact</a></li> 
+    </ul>
+  </div>
 </nav>
 
 <div class="container-fluid ">
@@ -47,82 +47,143 @@
         <a href="https://github.com/awheels"><i class="fa fa-github-square fa-5x"></i></a>
         <a href="https://ca.linkedin.com/in/andwheeler/"><i class="fa fa-linkedin-square fa-5x"></i></a>
         <a href="https://twitter.com/and_wheeler"><i class="fa fa-twitter-square fa-5x"></i>
-        <i class="fa fa-flickr fa-5x"></i></a>
+        <a href='#'><i class="fa fa-flickr fa-5x"></i></a>
       </div>
     </div>
   </div>
 
-  <div class='row-fluid' id='filter-box'>
-    <div class="dropdown" id='filter-button'>
-      <button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-        Filter
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <li><a href="#">View All</a></li>
-        <li class="divider"></li>
-        <% @months.each do |month| %>
-        <li><a href="#" data-month = '<% Date::MONTHNAMES.index(month.split[0]) %>' data-year = '<% month.split[1] %>'><%= month %></a></li>
-        <% end %>
-      </ul>
-    </div>
-  </div> 
-
-  <div class="row-fluid gallery-background">
-    <div class="month">
-      <h2>November</h2>
-      <% @images.each do |image| %>
-        <div class="col-md-4 photo-main-box">
-          <div class="photo" data-imageID=<%=image.id%>>
-            <img  src=<%= image.url %>>
-            <div class="date">
-              <p><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %> </p>
-            </div>
-          </div>
-        </div>
-        <div id="myModal-<%=image.id%>" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                <img  src=<%= image.url %>>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+  <div class='row-fluid fixed-filter-box'>
+    <div class='filter-nav'>
+<!--       <ul class="list-inline">
+        <%=@images.detect {|x| x.month == '01'}? "<li><a href='#january'>January</a></li>" : "<li>January</li>"%>
+        <%=@images.detect {|x| x.month == '02'}? "<li><a href='#february'>February</a></li>" : "<li>February</li>"%>
+        <%=@images.detect {|x| x.month == '03'}? "<li><a href='#march'>March</a></li>" : "<li>March</li>"%>
+        <%=@images.detect {|x| x.month == '04'}? "<li><a href='#april'>April</a></li>" : "<li>April</li>"%>
+        <%=@images.detect {|x| x.month == '05'}? "<li><a href='#may'>May</a></li>" : "<li>May</li>"%>
+        <%=@images.detect {|x| x.month == '06'}? "<li><a href='#june'>June</a></li>" : "<li>June</li>"%>
+        <%=@images.detect {|x| x.month == '07'}? "<li><a href='#july'>July</a></li>" : "<li>July</li>"%>
+        <%=@images.detect {|x| x.month == '08'}? "<li><a href='#august'>August</a></li>" : "<li>August</li>"%>
+        <%=@images.detect {|x| x.month == '09'}? "<li><a href='#september'>September</a></li>" : "<li>September</li>"%>
+        <%=@images.detect {|x| x.month == '10'}? "<li><a href='#october'>October</a></li>" : "<li>October</li>"%>
+        <%=@images.detect {|x| x.month == '11'}? "<li><a href='#november'>November</a></li>" : "<li>November</li>"%>
+        <%=@images.detect {|x| x.month == '12'}? "<li><a href='#december'>December</a></li>" : "<li>December</li>"%>
+      </ul> -->
+    </div> 
   </div>
+
+  <div class="row-fluid" id="gallery-background">
+    <% @images.each do |image| %>
+    <div class="col-xs-12 col-sm-6 col-xl-2 col-md-3 photo-main-box">
+      <div data-month=<%=image.month%> id=<%= image.month %> data-imageID=<%=image.id%> class="photo">
+        <img  src=<%= image.lowres %>>
+      </div>
+      <span>
+        <%= Date::ABBR_MONTHNAMES[image.month.to_i] %> <%= image.day %>
+      </span>
+    </div>
+
+    <div id="myModal-<%=image.id%>" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+              <img  src=<%= image.url %>>
+          </div>
+          <div class="modal-footer">
+            <div class="modal-title">
+              <div class="modal-caption">
+                <p>
+                  <span class="month"><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %>, <%= image.year %></span>
+                  <span class="caption">
+                    <span><strong>Caption:</strong></span> <%= image.caption %>
+                  </span>
+                </p>
+              </div> 
+              <a href="<%= image.instagram_link %>" target="_blank"> <i class="fa fa-instagram fa-3x"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div> 
 </div>
 
+<script>
+  $(document).ready(function(){
+    $('.photo-main-box div[data-month="11"]:first').attr('id', 'november')
+    $('.photo-main-box div[data-month="12"]:first').attr('id', 'december')
+  });
+</script>
+
+<script>
+$(document).ready(function(){
 
 
+    $(".filter-nav a").click(function(evn){
+        evn.preventDefault();
+        $('html,body').scrollTo(this.hash, {axis: 'y', offset: -130, duration: 750}); 
+    });
 
+    var aChildren = $(".filter-nav ul li").children(); 
+    var aArray = []; 
+    for (var i=0; i < aChildren.length; i++) {    
+        var aChild = aChildren[i];
+        var ahref = $(aChild).attr('href');
+        aArray.push(ahref);
+    } 
 
+    $(window).scroll(function(){
+      var windowPos = $(window).scrollTop(); 
+      var windowHeight = $(window).height(); 
+      var docHeight = $(document).height();
+
+      for (var i=0; i < aArray.length; i++) {
+          var theID = aArray[i];
+          var divPos = $(theID).offset().top; 
+          var divHeight = $(theID).height(); 
+          if (windowPos + 130 >= divPos && windowPos < (divPos + divHeight - 10)) {
+              $("a[href='" + theID + "']").addClass("nav-active");
+          } else {
+
+              $("a[href='" + theID + "']").removeClass("nav-active");
+          }
+      }
+
+      if(windowPos + windowHeight == docHeight) {
+          if (!$(".filter-box ul li:last-child a").hasClass("nav-active")) {
+              var navActiveCurrent = $(".nav-active").attr("href");
+              $("a[href='" + navActiveCurrent + "']").removeClass("nav-active");
+              $(".filter-box ul li:last-child a").addClass("nav-active");
+          }
+      }
+    });  
+  });
+</script>
+
+<script>
+  $(document).ready(function(){
+    $(window).scroll(function(){
+      var window_top = $(window).scrollTop() + 71; 
+      var div_top = $('.fixed-filter-box').offset().top;
+      if (window_top > div_top) {
+          $('.filter-nav').attr('id','stick');
+      } else {
+          $('.filter-nav').removeAttr('id','stick');
+      }
+    });
+  });
+</script>
 
 <script> 
-  $(document).ready(function(){
-      function fixDiv() {
-        var $cache = $('#filter-box'); 
-        if ($(window).scrollTop() > 505) 
-          $cache.css({'position': 'fixed', 'top': '70px'}); 
-        else
-          $cache.css({'position': 'absolute', 'top': '505px'});
-      }
-      $(window).scroll(fixDiv);
-      fixDiv();
-  });
-
   $(document).ready(function(){
     $('.photo').click(function(){
       var imageId = $(this).attr('data-imageID');  
       $("#myModal-"+imageId).modal('show');
     });
   });
-    
-  
+</script>
+
+<script>  
   $(document).ready(function(){
     var yearsPresent = $('#year-wrapper').length;
     var monthsPresent = $('#month-wrapper').length;
