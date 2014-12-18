@@ -33,6 +33,10 @@ helpers do
     end
   end
 
+  def total_days
+    (Date.today - Date.parse(Image.first.date)).to_i  
+  end
+
   def projects_years_months_days(start_date)
     array = []
     array << total_months(start_date) / 12   #years

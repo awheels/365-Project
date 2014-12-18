@@ -6,7 +6,7 @@
       <span class='icon-bar'></span>
       <span class='icon-bar'></span>
     </button>
-    <a class="navbar-brand" href="#">Andrew Wheeler</a>
+    <a class="navbar-brand" href="#">my365</a>
   </div>
   <div class='navbar-collapse collapse'>
     <ul class='nav navbar-nav navbar-right'>
@@ -21,8 +21,13 @@
 <div class="container-fluid ">
   <div class="row-fluid" id="header">
     <div id="header-contents">
-      <div id="time-count">
-        <% if projects_years_months_days(Image.projects_first_day)[0] != 0 %>
+      <div id="time-count" class="visible-sm visible-md visible-lg">
+        <h1 style="font-size:100px;"><span><%= total_days %> days</span></h1>
+      </div>
+      <div id="time-count" class="visible-xs">
+        <h1 style="font-size:74px;"><span><%= total_days %> days</span></h1>
+      </div>
+<!--         <% if projects_years_months_days(Image.projects_first_day)[0] != 0 %>
           <div id='year-wrapper'>
             <span class='years'><%= projects_years_months_days(Image.projects_first_day)[0] %></span>
             <br>
@@ -41,8 +46,8 @@
           <span class='days'><%= projects_years_months_days(Image.projects_first_day)[2] %> </span>
           <br>
           days
-        </div>
-      </div>
+        </div> -->
+
       <div class='row-fluid social-icons-background'>
         <a href="https://github.com/awheels"><i class="fa fa-github-square fa-5x"></i></a>
         <a href="https://ca.linkedin.com/in/andwheeler/"><i class="fa fa-linkedin-square fa-5x"></i></a>
@@ -54,7 +59,7 @@
 
   <div class='row-fluid fixed-filter-box'>
     <div class='filter-nav'>
-<!--       <ul class="list-inline">
+      <ul class="list-inline visible-md visible-lg">
         <%=@images.detect {|x| x.month == '01'}? "<li><a href='#january'>January</a></li>" : "<li>January</li>"%>
         <%=@images.detect {|x| x.month == '02'}? "<li><a href='#february'>February</a></li>" : "<li>February</li>"%>
         <%=@images.detect {|x| x.month == '03'}? "<li><a href='#march'>March</a></li>" : "<li>March</li>"%>
@@ -67,8 +72,35 @@
         <%=@images.detect {|x| x.month == '10'}? "<li><a href='#october'>October</a></li>" : "<li>October</li>"%>
         <%=@images.detect {|x| x.month == '11'}? "<li><a href='#november'>November</a></li>" : "<li>November</li>"%>
         <%=@images.detect {|x| x.month == '12'}? "<li><a href='#december'>December</a></li>" : "<li>December</li>"%>
-      </ul> -->
-    </div> 
+      </ul>
+
+      <ul class="list-inline visible-sm" style="left:50%; margin-left:-275px">
+        <%=@images.detect {|x| x.month == '01'}? "<li><a href='#january'>Jan</a></li>" : "<li>Jan</li>"%>
+        <%=@images.detect {|x| x.month == '02'}? "<li><a href='#february'>Feb</a></li>" : "<li>Feb</li>"%>
+        <%=@images.detect {|x| x.month == '03'}? "<li><a href='#march'>Mar</a></li>" : "<li>Mar</li>"%>
+        <%=@images.detect {|x| x.month == '04'}? "<li><a href='#april'>Apr</a></li>" : "<li>Apr</li>"%>
+        <%=@images.detect {|x| x.month == '05'}? "<li><a href='#may'>May</a></li>" : "<li>May</li>"%>
+        <%=@images.detect {|x| x.month == '06'}? "<li><a href='#june'>Jun</a></li>" : "<li>Jun</li>"%>
+        <%=@images.detect {|x| x.month == '07'}? "<li><a href='#july'>Jul</a></li>" : "<li>Jul</li>"%>
+        <%=@images.detect {|x| x.month == '08'}? "<li><a href='#august'>Aug</a></li>" : "<li>Aug</li>"%>
+        <%=@images.detect {|x| x.month == '09'}? "<li><a href='#september'>Sep</a></li>" : "<li>Sep</li>"%>
+        <%=@images.detect {|x| x.month == '10'}? "<li><a href='#october'>Oct</a></li>" : "<li>Oct</li>"%>
+        <%=@images.detect {|x| x.month == '11'}? "<li><a href='#november'>Nov</a></li>" : "<li>Nov</li>"%>
+        <%=@images.detect {|x| x.month == '12'}? "<li><a href='#december'>Dec</a></li>" : "<li>Dec</li>"%>
+      </ul>
+    </div>
+    <div class="dropdown">
+        <a class="button" data-toggle="dropdown" href="#">
+          <span>
+            Filter
+            <i class="fa fa-unsorted"></i>
+          </span>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li><a href="javascript: void(0)">All Guests</a></li>
+        <li><a href="javascript: void(0)">Currently Check-In</a></li>
+        </ul>
+    </div>
   </div>
 
   <div class="row-fluid" id="gallery-background">
@@ -185,14 +217,8 @@ $(document).ready(function(){
 
 <script>  
   $(document).ready(function(){
-    var yearsPresent = $('#year-wrapper').length;
-    var monthsPresent = $('#month-wrapper').length;
-    if (yearsPresent != 0) {
-      $("#header-contents").css('margin-left', '-334px');
-    } else if (monthsPresent != 0){
-      $("#header-contents").css('margin-left', '-222px');
-    } else {
-      $("#header-contents").css('margin-left', '-145px');
-    };
+    var w = parseInt($('#header-contents').width()/2);
+    console.log(w);
+    $('#header-contents').css('margin-left', '-'+w+'px');
   });
 </script>
