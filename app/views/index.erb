@@ -73,7 +73,7 @@
         <%=@images.detect {|x| x.month == '11'}? "<li><a href='#november'>November</a></li>" : "<li>November</li>"%>
         <%=@images.detect {|x| x.month == '12'}? "<li><a href='#december'>December</a></li>" : "<li>December</li>"%>
       </ul>
-
+<!-- 
       <ul class="list-inline visible-sm-inline-block" style="left:50%; margin-left:-275px">
         <%=@images.detect {|x| x.month == '01'}? "<li><a href='#january'>Jan</a></li>" : "<li>Jan</li>"%>
         <%=@images.detect {|x| x.month == '02'}? "<li><a href='#february'>Feb</a></li>" : "<li>Feb</li>"%>
@@ -87,10 +87,10 @@
         <%=@images.detect {|x| x.month == '10'}? "<li><a href='#october'>Oct</a></li>" : "<li>Oct</li>"%>
         <%=@images.detect {|x| x.month == '11'}? "<li><a href='#november'>Nov</a></li>" : "<li>Nov</li>"%>
         <%=@images.detect {|x| x.month == '12'}? "<li><a href='#december'>Dec</a></li>" : "<li>Dec</li>"%>
-      </ul>
+      </ul> -->
     </div>
 
-<div class="btn-group visible-xs">
+<div class="btn-group visible-xs visible-sm">
   <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
     Months
     <span class="caret"></span>
