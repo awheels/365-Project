@@ -34,7 +34,11 @@ helpers do
   end
 
   def total_days
-    (Date.today - Date.parse(Image.first.date)).to_i  
+    if (Image.all.length != 0)
+      (Date.today - Date.parse(Image.first.date)).to_i 
+    else 
+      return 0 
+    end
   end
 
   def projects_years_months_days(start_date)
@@ -49,9 +53,8 @@ helpers do
       array << 0
     end
   end
-
-
 end
+
 get '/' do
   # @images = Image.where({month: Time.now.strftime("%m"), year: Time.now.strftime("%Y")})
   @images = Image.order('date DESC')
