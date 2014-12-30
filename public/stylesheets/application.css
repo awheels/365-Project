@@ -55,10 +55,6 @@ body.modal-open {
   position: absolute;
   top:50%;
   margin-top:-150px;
-  left:50%;
-}
-
-#time-count {
 }
 
 #year-wrapper {
@@ -192,6 +188,13 @@ body.modal-open {
   margin-top:71px;
 }
 
+.fixed-filter-box .btn-group {
+  z-index:1000;
+  left:50%;
+  top:6px;
+  margin-left:-39px;
+}
+
 .filter-nav {
   position:absolute;
   background-color: black;
@@ -237,7 +240,7 @@ body.modal-open {
 .fixed-filter-box .filter-nav ul {
   left: 50%;
   position: relative;
-  margin-left: -490px;
+  margin-left: -500px;
   margin-top: 7px;
   display:inline-block;
 }
