@@ -69,7 +69,7 @@ end
 post '/subscriptions' do 
   params = JSON.parse(request.env["rack.input"].read)
   instagram_image_id = params[0]['data']['media_id']
-  uri = URI.parse("https://api.instagram.com/v1/media/#{instagram_image_id}?access_token=857033525.f44ef64.eb596e8988d84c8a934edb27c0d52ded")
+  uri = URI.parse("https://api.instagram.com/v1/media/#{instagram_image_id}?access_token=857033525.aed2309.b38ab00be4d44c6388f7f0ec0eb3503a")
   response = Net::HTTP.get(uri)
   hash = JSON.parse(response)
 
