@@ -7,6 +7,7 @@ require 'active_support/all'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'net/http'
+
 require 'pry' if development?
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))

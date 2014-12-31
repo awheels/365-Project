@@ -35,7 +35,7 @@ helpers do
 
   def total_days
     if (Image.all.length != 0)
-      (Date.today - Date.parse(Image.first.date)).to_i 
+      (Date.today - Date.parse(Image.first.date)).to_i + 1
     else 
       return 0 
     end
@@ -68,15 +68,10 @@ end
 
 post '/subscriptions' do 
   params = JSON.parse(request.env["rack.input"].read)
-  puts params
   instagram_image_id = params[0]['data']['media_id']
-  puts instagram_image_id
   uri = URI.parse("https://api.instagram.com/v1/media/#{instagram_image_id}?access_token=857033525.aed2309.b38ab00be4d44c6388f7f0ec0eb3503a")
-  puts uri
   response = Net::HTTP.get(uri)
-  puts response
   hash = JSON.parse(response)
-  puts hash
 
   if (hash['data']['tags'].last == 'my365') #&& (Time.now.utc.to_date == Time.at(hash['data']['created_time'].to_i).to_date)
     Image.create(
