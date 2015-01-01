@@ -41,18 +41,18 @@ helpers do
     end
   end
 
-  def projects_years_months_days(start_date)
-    array = []
-    array << total_months(start_date) / 12   #years
-    array << total_months(start_date) % 12   #months
-    if get_day_from_date(Time.now) > get_day_from_date(start_date) #days
-      array << (get_day_from_date(Time.now) - get_day_from_date(start_date))
-    elsif get_day_from_date(Time.now) < get_day_from_date(start_date)
-      array << ((Date.new((Date.today).year,(Date.today).month-1,-1).mday) - get_day_from_date(start_date)) + get_day_from_date(Time.now)
-    else 
-      array << 0
-    end
-  end
+  # def projects_years_months_days(start_date)
+  #   array = []
+  #   array << total_months(start_date) / 12   #years
+  #   array << total_months(start_date) % 12   #months
+  #   if get_day_from_date(Time.now) > get_day_from_date(start_date) #days
+  #     array << (get_day_from_date(Time.now) - get_day_from_date(start_date))
+  #   elsif get_day_from_date(Time.now) < get_day_from_date(start_date)
+  #     array << ((Date.new((Date.today).year,(Date.today).month-1,-1).mday) - get_day_from_date(start_date)) + get_day_from_date(Time.now)
+  #   else 
+  #     array << 0
+  #   end
+  # end
 end
 
 get '/' do
