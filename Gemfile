@@ -12,7 +12,7 @@ gem 'puma'
 gem 'tux'
 gem 'instagram'
 gem 'json'
-gem "racksh"
+gem 'racksh'
 
 group :development, :test do
   gem 'pry'

@@ -158,15 +158,20 @@ $(document).ready(function(){
         var aChild = aChildren[i];
         var ahref = $(aChild).attr('href');
         aArray.push(ahref);
+        console.log(aArray);
     } 
 
     $(window).scroll(function(){
       var windowPos = $(window).scrollTop(); 
+      console.log(windowPos);
       var windowHeight = $(window).height(); 
+      console.log(windowHeight);
       var docHeight = $(document).height();
+      console.log(docHeight);
 
       for (var i=0; i < aArray.length; i++) {
           var theID = aArray[i];
+          console.log(theID);
           var divPos = $(theID).offset().top; 
           var divHeight = $(theID).height(); 
           if (windowPos + 130 >= divPos && windowPos < (divPos + divHeight - 10)) {
