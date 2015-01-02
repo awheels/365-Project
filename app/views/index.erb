@@ -138,6 +138,16 @@
 
 <script>
   $(document).ready(function(){
+    $('.photo-main-box div[data-month="01"]:first').attr('id', 'january')
+    $('.photo-main-box div[data-month="02"]:first').attr('id', 'february')
+    $('.photo-main-box div[data-month="03"]:first').attr('id', 'march')
+    $('.photo-main-box div[data-month="04"]:first').attr('id', 'april')
+    $('.photo-main-box div[data-month="05"]:first').attr('id', 'may')
+    $('.photo-main-box div[data-month="06"]:first').attr('id', 'june')
+    $('.photo-main-box div[data-month="07"]:first').attr('id', 'july')
+    $('.photo-main-box div[data-month="08"]:first').attr('id', 'august')
+    $('.photo-main-box div[data-month="09"]:first').attr('id', 'september')
+    $('.photo-main-box div[data-month="10"]:first').attr('id', 'october')
     $('.photo-main-box div[data-month="11"]:first').attr('id', 'november')
     $('.photo-main-box div[data-month="12"]:first').attr('id', 'december')
   });
@@ -158,22 +168,16 @@ $(document).ready(function(){
         var aChild = aChildren[i];
         var ahref = $(aChild).attr('href');
         aArray.push(ahref);
-        console.log(aArray);
     } 
 
     $(window).scroll(function(){
       var windowPos = $(window).scrollTop(); 
-      console.log(windowPos);
       var windowHeight = $(window).height(); 
-      console.log(windowHeight);
       var docHeight = $(document).height();
-      console.log(docHeight);
 
       for (var i=0; i < aArray.length; i++) {
           var theID = aArray[i];
-          console.log(theID);
-          var divPos = $(theID).offset(); 
-          console.log(divPos);
+          var divPos = $(theID).offset().top; 
           var divHeight = $(theID).height(); 
           if (windowPos + 130 >= divPos && windowPos < (divPos + divHeight - 10)) {
               $("a[href='" + theID + "']").addClass("nav-active");
