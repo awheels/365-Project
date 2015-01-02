@@ -173,6 +173,7 @@ $(document).ready(function(){
           var theID = aArray[i];
           console.log(theID);
           var divPos = $(theID).offset(); 
+          console.log(divPos);
           var divHeight = $(theID).height(); 
           if (windowPos + 130 >= divPos && windowPos < (divPos + divHeight - 10)) {
               $("a[href='" + theID + "']").addClass("nav-active");
