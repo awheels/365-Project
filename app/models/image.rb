@@ -1,5 +1,6 @@
 class Image < ActiveRecord::Base
   validates :url, uniqueness: true
+  validates :instagram_id, uniqueness: true
 
   def self.projects_first_day 
     dates = []

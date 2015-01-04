@@ -6,19 +6,18 @@
       <span class='icon-bar'></span>
       <span class='icon-bar'></span>
     </button>
-    <a class="navbar-brand" href="#">my365</a>
+    <div class="navbar-brand"><span>my</span>365<span>project</span></div>
   </div>
   <div class='navbar-collapse collapse'>
     <ul class='nav navbar-nav navbar-right'>
-      <li class='active'><a href='#'>Home</a></li>
-      <li><a href='#'>About</a></li>
-      <li><a href='#'>Gallery</a></li> 
-      <li><a href='#'>Contact</a></li> 
+      <li><a href='#home'>Home</a></li>
+      <li><a href='#gallery'>Gallery</a></li> 
+      <li><a href='#about'>About</a></li>
     </ul>
   </div>
 </nav>
 
-<div class="container-fluid ">
+<div class="container-fluid" id="home">
   <div class="row-fluid" id="header">
     <div id="header-contents">
       <div id="time-count" class="visible-sm visible-md visible-lg">
@@ -99,15 +98,15 @@
 </div>
   </div>
 
-  <div class="row-fluid" id="gallery-background">
+  <div class="row-fluid" id="gallery">
     <% @images.each do |image| %>
     <div class="col-xs-12 col-sm-6 col-xl-2 col-md-3 photo-main-box">
       <div data-month=<%=image.month%> id=<%= image.month %> data-imageID=<%=image.id%> class="photo">
         <img  src=<%= image.lowres %>>
       </div>
-      <span>
-        <%= Date::ABBR_MONTHNAMES[image.month.to_i] %> <%= image.day %>
-      </span>
+      <div class="image-date">
+        <h6><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %></h6>
+      </div>
     </div>
 
     <div id="myModal-<%=image.id%>" class="modal fade">
@@ -133,6 +132,17 @@
       </div>
     </div>
     <% end %>
+  </div>
+  <div id="about">
+    <h3>About</h3>
+    <div class='profile-lock'>
+      <div class='profile-img'>
+        <img  src="/images/ProfileImg.jpg">
+      </div>
+      <div class='profile-text'>
+        <p>fjdkls;jfkladsjf adsf djsaklf ;dasljf kl;adsj lf;jdsaklfj dsaf  dsalfkjdls;aj fadsj fdas flk;jasd ;fj ds;lajkf sad f safjl;kdsajf asd;lkjf asd;f sadf </p>
+      </div>
+    </div>
   </div> 
 </div>
 
@@ -155,8 +165,6 @@
 
 <script>
 $(document).ready(function(){
-
-
     $(".filter-nav a").click(function(evn){
         evn.preventDefault();
         $('html,body').scrollTo(this.hash, {axis: 'y', offset: -130, duration: 750}); 
@@ -193,6 +201,34 @@ $(document).ready(function(){
               $("a[href='" + navActiveCurrent + "']").removeClass("nav-active");
               $(".filter-box ul li:last-child a").addClass("nav-active");
           }
+      }
+    });  
+  });
+</script>
+
+<script>
+$(document).ready(function(){
+    $(".navbar-collapse a").click(function(evn){
+        evn.preventDefault();
+        $('html,body').scrollTo(this.hash, {axis: 'y', offset: -130, duration: 750}); 
+    });
+
+    var aChildren = $(".navbar-collapse ul li").children(); 
+    var aArray = []; 
+    for (var i=0; i < aChildren.length; i++) {    
+        var aChild = aChildren[i];
+        var ahref = $(aChild).attr('href');
+        aArray.push(ahref);
+    } 
+
+    $(window).scroll(function(){
+      var windowPos = $(window).scrollTop(); 
+      var windowHeight = $(window).height(); 
+      var docHeight = $(document).height();
+      for (var i=0; i < aArray.length; i++) {
+          var theID = aArray[i];
+          var divPos = $(theID).offset().top; 
+          var divHeight = $(theID).height(); 
       }
     });  
   });
