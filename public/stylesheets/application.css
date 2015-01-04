@@ -50,6 +50,7 @@ body.modal-open {
   background-color: #f0efef;
   margin-top: 75px;
   display:inline-block;
+  width:100%;
 }
 
 #header {
