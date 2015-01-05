@@ -73,7 +73,7 @@ post '/subscriptions' do
   response = Net::HTTP.get(uri)
   hash = JSON.parse(response)
 
-  if (hash['data']['tags'].last == 'my365') #&& (Time.now.utc.to_date == Time.at(hash['data']['created_time'].to_i).to_date)
+  if (hash['data']['tags'].last == 'my365') 
     Image.create(
       url:            hash['data']['images']['standard_resolution']['url'],
       thumbnail:      hash['data']['images']['thumbnail']['url'],

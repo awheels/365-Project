@@ -48,9 +48,10 @@ body.modal-open {
 
 #gallery {
   background-color: #f0efef;
-  margin-top: 75px;
   display:inline-block;
   width:100%;
+  margin-top: 47px;
+  padding-top: 25px;
 }
 
 #header {
