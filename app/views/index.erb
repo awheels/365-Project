@@ -52,50 +52,52 @@
         <%=@images.detect {|x| x.month == '12'}? "<li><a href='#december'>December</a></li>" : "<li>December</li>"%>
       </ul>
     </div>
-<div class="btn-group visible-xs visible-sm">
-  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
-    Months
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu">
-    <% if (@images.detect {|x| x.month == '01'}) %> 
-      <li><a href='#january'>January</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '02'}) %> 
-      <li><a href='#february'>February</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '03'}) %> 
-      <li><a href='#march'>March</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '04'}) %> 
-      <li><a href='#april'>April</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '05'}) %> 
-      <li><a href='#may'>May</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '06'}) %> 
-      <li><a href='#june'>June</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '07'}) %> 
-      <li><a href='#july'>July</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '08'}) %> 
-      <li><a href='#august'>August</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '09'}) %> 
-      <li><a href='#september'>September</a></li>
-    <% end %>
-    <% if (@images.detect {|x| x.month == '10'}) %> 
-      <li><a href='#october'>October</a></li>
-    <% end %> 
-    <% if (@images.detect {|x| x.month == '11'}) %> 
-      <li><a href='#november'>November</a></li>
-    <% end %> 
-    <% if (@images.detect {|x| x.month == '12'}) %> 
-      <li><a href='#december'>December</a></li>
-    <% end %> 
-  </ul>
-</div>
+    <div class="visible-xs visible-sm">
+      <div class="btn-group">
+        <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
+          Months
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <% if (@images.detect {|x| x.month == '01'}) %> 
+            <li><a href='#january'>January</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '02'}) %> 
+            <li><a href='#february'>February</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '03'}) %> 
+            <li><a href='#march'>March</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '04'}) %> 
+            <li><a href='#april'>April</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '05'}) %> 
+            <li><a href='#may'>May</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '06'}) %> 
+            <li><a href='#june'>June</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '07'}) %> 
+            <li><a href='#july'>July</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '08'}) %> 
+            <li><a href='#august'>August</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '09'}) %> 
+            <li><a href='#september'>September</a></li>
+          <% end %>
+          <% if (@images.detect {|x| x.month == '10'}) %> 
+            <li><a href='#october'>October</a></li>
+          <% end %> 
+          <% if (@images.detect {|x| x.month == '11'}) %> 
+            <li><a href='#november'>November</a></li>
+          <% end %> 
+          <% if (@images.detect {|x| x.month == '12'}) %> 
+            <li><a href='#december'>December</a></li>
+          <% end %> 
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="row-fluid" id="gallery">
