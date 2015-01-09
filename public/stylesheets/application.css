@@ -126,7 +126,10 @@ body.modal-open {
   height: auto;
   float:left;
   position:relative;
-  padding: 13%;
+  padding-left: 13%;
+  padding-right: 13%;
+  padding-top: 13%;
+  padding-bottom: calc(13% - 30px);
   background-color: white;
   margin-bottom: 15px;
 }
@@ -229,15 +232,13 @@ body.modal-open {
   text-decoration: none;
 }
 
-#gallery .photo-main-box .image-date h6 {
+#gallery .photo-main-box .image-date p {
   color: black;
-  font-size: 10px;
-  top: -45px;
+  font-size: 12px;
   position: relative;
-  left: 50%;
-  margin-left: -30px;
   font-family: Georgia;
-  display: inline-block;
+  text-align: center;
+  top: 10px;
 }
 
 .modal-body {
@@ -293,7 +294,6 @@ body.modal-open {
   color:white;
   letter-spacing:0.05em;
   font-family: 'Impact', Arial, sans-serif;
-
 }
 
 #time-count h1 span {
