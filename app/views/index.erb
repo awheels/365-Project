@@ -52,50 +52,52 @@
         <%=@images.detect {|x| x.month == '12'}? "<li><a href='#december'>December</a></li>" : "<li>December</li>"%>
       </ul>
     </div>
-    <div class="visible-xs visible-sm">
-      <div class="btn-group">
-        <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
-          Months
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <% if (@images.detect {|x| x.month == '01'}) %> 
-            <li><a href='#january'>January</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '02'}) %> 
-            <li><a href='#february'>February</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '03'}) %> 
-            <li><a href='#march'>March</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '04'}) %> 
-            <li><a href='#april'>April</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '05'}) %> 
-            <li><a href='#may'>May</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '06'}) %> 
-            <li><a href='#june'>June</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '07'}) %> 
-            <li><a href='#july'>July</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '08'}) %> 
-            <li><a href='#august'>August</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '09'}) %> 
-            <li><a href='#september'>September</a></li>
-          <% end %>
-          <% if (@images.detect {|x| x.month == '10'}) %> 
-            <li><a href='#october'>October</a></li>
-          <% end %> 
-          <% if (@images.detect {|x| x.month == '11'}) %> 
-            <li><a href='#november'>November</a></li>
-          <% end %> 
-          <% if (@images.detect {|x| x.month == '12'}) %> 
-            <li><a href='#december'>December</a></li>
-          <% end %> 
-        </ul>
+    <div class='filter-mobile-nav'>
+      <div class="visible-xs visible-sm">
+        <div class="btn-group">
+          <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
+            Months
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <% if (@images.detect {|x| x.month == '01'}) %> 
+              <li><a href='#january'>January</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '02'}) %> 
+              <li><a href='#february'>February</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '03'}) %> 
+              <li><a href='#march'>March</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '04'}) %> 
+              <li><a href='#april'>April</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '05'}) %> 
+              <li><a href='#may'>May</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '06'}) %> 
+              <li><a href='#june'>June</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '07'}) %> 
+              <li><a href='#july'>July</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '08'}) %> 
+              <li><a href='#august'>August</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '09'}) %> 
+              <li><a href='#september'>September</a></li>
+            <% end %>
+            <% if (@images.detect {|x| x.month == '10'}) %> 
+              <li><a href='#october'>October</a></li>
+            <% end %> 
+            <% if (@images.detect {|x| x.month == '11'}) %> 
+              <li><a href='#november'>November</a></li>
+            <% end %> 
+            <% if (@images.detect {|x| x.month == '12'}) %> 
+              <li><a href='#december'>December</a></li>
+            <% end %> 
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -104,7 +106,8 @@
     <% @images.each do |image| %>
     <div class="col-xs-12 col-sm-6 col-xl-2 col-md-3 photo-main-box">
       <div data-month=<%=image.month%> id=<%= image.month %> data-imageID=<%=image.id%> class="photo">
-        <img  src=<%= image.lowres %>>
+        <img class="visible-xs visible-sm" src=<%= image.url %>>
+        <img class="visible-md visible-lg" src=<%= image.lowres %>>
         <div class="image-date">
           <p><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %></p>
         </div>
@@ -136,13 +139,13 @@
     <% end %>
   </div>
   <div id="about">
+    <div class='profile-img'>
+      <img  src="/images/ProfileImg.jpg">
+    </div>
     <h3>About</h3>
     <div class='profile-lock'>
-      <div class='profile-img'>
-        <img  src="/images/ProfileImg.jpg">
-      </div>
       <div class='profile-text'>
-        <p>fjdkls;jfkladsjf adsf djsaklf ;dasljf kl;adsj lf;jdsaklfj dsaf  dsalfkjdls;aj fadsj fdas flk;jasd ;fj ds;lajkf sad f safjl;kdsajf asd;lkjf asd;f sadf </p>
+        <p> I've always been keen to take on the challenge of a 365 photo project but was always deterred by the difficulty of keeping motivated and organized. I knew that if I had to remember to upload my images to a specific folder or website on a regular basis that it would only be a matter of time before I forgot a few days and lost my motivation. By leveraging the Instagram API I've been able to simplify the workflow, which I am hoping will lead to a successful project. Anytime that I post an image on my Instagram account with the hashtag of #my365 the image is pulled onto this site along with its date and other details.     </p>
       </div>
     </div>
   </div> 
@@ -245,6 +248,11 @@ $(document).ready(function(){
           $('.filter-nav').attr('id','stick');
       } else {
           $('.filter-nav').removeAttr('id','stick');
+      }
+      if (window_top > div_top) {
+          $('.filter-mobile-nav').attr('id','stick-mobile');
+      } else {
+          $('.filter-mobile-nav').removeAttr('id','stick-mobile');
       }
     });
   });

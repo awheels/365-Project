@@ -3,7 +3,7 @@
 }
 
 .navbar .navbar-collapse li a {
-  font-family: 'Impact', Arial, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size:18px;
   color:black;
 }
@@ -153,6 +153,17 @@ body.modal-open {
   margin-top:71px;
 }
 
+.fixed-filter-box #stick-mobile {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  margin-top:71px;
+}
+
+.fixed-filter-box .filter-mobile-nav {
+  width: 100%;
+}
+
 .fixed-filter-box .btn-group {
   z-index:1000;
   left:50%;
@@ -213,15 +224,16 @@ body.modal-open {
 
 .fixed-filter-box .filter-nav ul li a {
   color:white;
-  font-family: 'Impact', Arial, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 22px;
   margin-left: 2px;
   margin-right: 2px;
+  text-decoration: none;
 }
 
 .fixed-filter-box .filter-nav ul li {
   color:gray;
-  font-family: 'Impact', Arial, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 22px;
   margin-left: 2px;
   margin-right: 2px;
@@ -236,7 +248,7 @@ body.modal-open {
   color: black;
   font-size: 12px;
   position: relative;
-  font-family: Georgia;
+  font-family: 'Oswald', sans-serif;
   text-align: center;
   top: 10px;
 }
@@ -307,14 +319,18 @@ body.modal-open {
 
 #about {
   width:100%;
-  background-color:#777777;
-  height:450px;
+  background-color:rgb(54, 54, 54);
+  overflow:auto;
   padding-top: 15px;
   margin-top: -25px;
 }
 
 #about h3 {
   text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color:white;
+  margin-top: -20px;
+  position: relative;
 }
 
 #about .profile-lock {
@@ -323,16 +339,24 @@ body.modal-open {
 }
 
 #about .profile-img {
-  width:200px;
+  width:150px;
   position:relative;
-  float:left;
-  margin-right: 15px;
+  position:relative;
+  left:50%;
+  margin-left:-75px;
+}
+
+#about .profile-lock .profile-text {
+  font-family: 'Arial', sans-serif;
+  color:white;
+  text-align:justify;
+  margin-bottom:40px;
 }
 
 #about .profile-img img{
   width:100%;
   border-radius: 100px;
-
+  margin-top:15px;
 }
 
 
