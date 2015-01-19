@@ -61,7 +61,7 @@ body.modal-open {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: 100% 100%;
+  background-size: auto auto;
   text-align: center;
   overflow:hidden;
 }
