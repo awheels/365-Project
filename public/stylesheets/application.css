@@ -55,15 +55,17 @@ body.modal-open {
 }
 
 #header {
+  background: url(../images/InstagramCollageV3.jpg) no-repeat center top scroll; 
   position: relative;
-  height: 500px;
-  background: url(../images/InstagramCollageV3.jpg) no-repeat center center fixed; 
+  height: 490px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: 100% auto;
   text-align: center;
+  overflow:hidden;
 }
+
 
 #header-contents {
   position: absolute;
