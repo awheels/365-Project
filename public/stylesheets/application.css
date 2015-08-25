@@ -50,7 +50,6 @@ body.modal-open {
   background-color: #f0efef;
   display:inline-block;
   width:100%;
-  margin-top: 47px;
   padding-top: 25px;
 }
 
@@ -363,4 +362,7 @@ body.modal-open {
   margin-top:15px;
 }
 
+.selected-image {
+    border: 5px solid #E53434;
+}
 

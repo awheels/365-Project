@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+      <span class='sr-only'>Toggle navigation</span>
+      <span class='icon-bar'></span>
+      <span class='icon-bar'></span>
+      <span class='icon-bar'></span>
+    </button>
+    <div class="navbar-brand"><span>my</span>365<span>project</span></div>
+  </div>
+  <div class='navbar-collapse collapse'>
+    <ul class='nav navbar-nav navbar-right'>
+      <li><a href='/'>Home</a></li>
+      <li><a href='#about'>About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="row-fluid" id="gallery">
+  <% @images.each do |image| %>
+  <div class="col-xs-12 col-sm-6 col-xl-2 col-md-3 photo-main-box">
+    <div data-month=<%=image.month%> id=<%= image.month %> data-imageID=<%=image.id%> class="photo">
+      <img class="visible-xs visible-sm" src=<%= image.url %>>
+      <img class="visible-md visible-lg" src=<%= image.lowres %>>
+      <div class="image-date">
+        <p><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal-<%=image.id%>" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <div class="modal-title">
+            <div class="modal-caption">
+              <p>
+                <span class="month"><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %>, <%= image.year %></span>
+                <span class="caption">
+                  <span><strong>Caption:</strong></span> <%= image.caption %>
+                </span>
+              </p>
+            </div> 
+            <a href="<%= image.instagram_link %>" target="_blank"> <i class="fa fa-instagram fa-3x"></i> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div id="instagram-modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body" style="overflow-y: hidden">
+          <div id='add-instagram'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,4 +16,5 @@ class Image < ActiveRecord::Base
     array = filtered_months & filtered_months
     return array
   end
+
 end

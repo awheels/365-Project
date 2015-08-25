@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212135000) do
+ActiveRecord::Schema.define(version: 20150825150600) do
 
-  create_table "images", force: true do |t|
+  create_table "images", force: :cascade do |t|
     t.string   "url"
     t.string   "created_time"
     t.string   "month"
@@ -28,6 +29,16 @@ ActiveRecord::Schema.define(version: 20141212135000) do
     t.string   "thumbnail"
     t.string   "lowres"
     t.string   "date"
+    t.boolean  "tag",            default: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "accesstoken"
+    t.string   "instagram_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password"
   end
 
 end

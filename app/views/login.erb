@@ -1,0 +1,17 @@
+<div class="col-md-6">
+  <h2 class="login-font">Login</h2>
+  <hr/>
+  <% if @login_error %>
+    <div class="form-font-error">
+      <strong>Your username/password is incorrect.</strong>
+    </div>
+  <% end %>
+  <form role="form" method="post" action="/login">
+    <label class="form-font">Username:</label>
+    <input type="text" class="form-control" name="username" value="<%= @user.username %>">
+    <label class="form-font">Password:</label>
+    <input type="password" class="form-control" name="password" value="<%= @user.password %>">
+    <br>
+    <div><input type="submit" class="btn btn-default form-font-bold" value="Submit"></div>
+  </form>
+</div>
