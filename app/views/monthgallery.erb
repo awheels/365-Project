@@ -11,6 +11,7 @@
   <div class='navbar-collapse collapse'>
     <ul class='nav navbar-nav navbar-right'>
       <li><a href='/'>Home</a></li>
+      <li><a href='#' id="edit-images">Edit</a></li>
       <li><a href='#about'>About</a></li>
     </ul>
   </div>
@@ -20,10 +21,18 @@
   <% @images.each do |image| %>
   <div class="col-xs-12 col-sm-6 col-xl-2 col-md-3 photo-main-box">
     <div data-month=<%=image.month%> id=<%= image.month %> data-imageID=<%=image.id%> class="photo">
+      <% if(image.tag) %>
+      <span class="glyphicon glyphicon-check preferences" aria-hidden="true" style="position: absolute; top: 10px; right: 10px; color: green; font-size: 15px;"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-plus preferences" onclick="makeImgPrimary(<%= image.id%>, <%= image.month %>);" id="add-primary-tag" aria-hidden="true" style="position: absolute; top: 10px; right: 10px; color: red; font-size: 15px;"></span>
+      <% end %>
+      <span class="glyphicon glyphicon-remove preferences" onclick="deleteimg(<%= image.id%>);" aria-hidden="true" style="position: absolute; top: 260px; right: 10px; color: red; font-size: 15px;"></span>
       <img class="visible-xs visible-sm" src=<%= image.url %>>
       <img class="visible-md visible-lg" src=<%= image.lowres %>>
       <div class="image-date">
         <p><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %></p>
+
+
       </div>
     </div>
   </div>
@@ -63,3 +72,35 @@
     </div>
   </div>
 </div>
+
+<script>
+  function makeImgPrimary(id, month){
+    var request = $.ajax({
+      url: '/set_primary',
+      type: "POST",
+      data: { id : id, month : month },
+      dataType:'json'
+    });
+    request.done(function(msg) {
+      location.reload();
+    }); 
+  }
+
+  function deleteimg(id){
+    var request = $.ajax({
+      url: '/deleteimg',
+      type: "POST",
+      data: { id : id },
+      dataType:'json'
+    });
+    request.done(function(msg) {
+      location.reload();
+    }); 
+  }
+
+  $(document).ready(function(){
+    $('#edit-images').click(function(){
+      $('.preferences').toggleClass('hidden'); 
+    });
+  });
+</script>

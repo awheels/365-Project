@@ -59,15 +59,15 @@ Instagram.configure do |config|
 end
 
 get '/' do
-  @images = Image.where("tag = ?", true).order('date DESC')
+  @images = Image.where("tag = ? AND deleted != ?", true, true).order('date DESC')
   @months = Image.all_months_and_years
   erb :index
 end
 
-get '/users/logout' do
-  session.clear
-  redirect '/'
-end
+# get '/users/logout' do
+#   session.clear
+#   redirect '/'
+# end
 
 get '/users/login' do
   @login_error = false
@@ -94,7 +94,7 @@ post '/login' do
 end
 
 get '/gallery/:year-:month' do
-  @images = Image.where("year = ? AND month = ?", params['year'], params['month'])
+  @images = Image.where("year = ? AND month = ? AND deleted != ?", params['year'], params['month'], true).order('date ASC')
   erb :monthgallery
 end
 
@@ -125,40 +125,52 @@ get "/instagram_upload" do
       image_link = item.images.low_resolution.url
       displayInstagramImages += "<div class='col-md-4 col-sm-6'><img src=#{image_link} class='img-responsive instagram-image' data-url="+item.images.standard_resolution.url+" data-thumbnail="+item.images.thumbnail.url+" data-lowres="+item.images.low_resolution.url+" data-createdtime="+item.created_time+" data-caption='"+item.caption.text+"' data-instagramid="+item.id+" data-instagramlink="+item.link+" style='margin-top:15px'></div>"
     end
-    params.delete(:maxid)
     { :images => displayInstagramImages, :maxid => maxid }.to_json
   end
 end
 
 post "/instagram-save" do
-  if login?
-    params['array'].each do |image|
-      primary_img = Image.where("month = ? AND year =? AND tag = ?", Time.at(image[1]['created_time'].to_i).strftime("%m"), Time.at(image[1]['created_time'].to_i).strftime("%Y"), true)
-      if(!primary_img == nil)
-        tag = false
-      else 
-        tag = true
-      end
+  params['array'].each do |image|
+    primary_img = Image.where("month = ? AND year =? AND tag = ?", Time.at(image[1]['created_time'].to_i).strftime("%m"), Time.at(image[1]['created_time'].to_i).strftime("%Y"), true)
 
-      Image.create(
-        url:            image[1]['url'],
-        thumbnail:      image[1]['thumbnail'],
-        lowres:         image[1]['lowres'],
-        created_time:   image[1]['created_time'],
-        month:          Time.at(image[1]['created_time'].to_i).strftime("%m"), 
-        day:            Time.at(image[1]['created_time'].to_i).strftime("%d"),
-        year:           Time.at(image[1]['created_time'].to_i).strftime("%Y"),
-        date:           Time.at(image[1]['created_time'].to_i).strftime("%Y-%m-%d"),
-        caption:        image[1]['caption'],
-        instagram_id:   image[1]['instagram_id'],    
-        instagram_link: image[1]['instagram_link'],
-        tag:            tag)
+    if(primary_img.empty?)
+      tag = true
+    else 
+      tag = false
     end
+
+    Image.create(
+      url:            image[1]['url'],
+      thumbnail:      image[1]['thumbnail'],
+      lowres:         image[1]['lowres'],
+      created_time:   image[1]['created_time'],
+      month:          Time.at(image[1]['created_time'].to_i).strftime("%m"), 
+      day:            Time.at(image[1]['created_time'].to_i).strftime("%d"),
+      year:           Time.at(image[1]['created_time'].to_i).strftime("%Y"),
+      date:           Time.at(image[1]['created_time'].to_i).strftime("%Y-%m-%d"),
+      caption:        image[1]['caption'],
+      instagram_id:   image[1]['instagram_id'],
+      instagram_link: image[1]['instagram_link'],
+      tag:            tag)
   end
+  'success'.to_json  
 end
 
 get '/subscriptions' do 
   params["hub.challenge"]
+end
+
+post '/set_primary' do
+  id = params['id']
+  Image.where('month = ?', params['month']).update_all(tag: false)
+  Image.update(id, tag: true)
+  'success'.to_json  
+end
+
+post '/deleteimg' do
+  id = params['id']
+  Image.update(id, deleted: true)
+  'success'.to_json  
 end
 
 post '/subscriptions' do 
@@ -170,10 +182,11 @@ post '/subscriptions' do
 
   if (hash['data']['tags'].last == 'my365') 
     primary_img = Image.where("month = ? AND year =? AND tag = ?", Time.now.strftime("%m"), Time.now.strftime("%Y"), true)
-    if(primary_img)
-      tag = false
-    else 
+
+    if(primary_img.empty?)
       tag = true
+    else 
+      tag = false
     end
 
     Image.create(
