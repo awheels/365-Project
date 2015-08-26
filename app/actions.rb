@@ -161,9 +161,9 @@ get '/subscriptions' do
 end
 
 post '/set_primary' do
-  id = params['id']
-  Image.where('month = ?', params['month']).update_all(tag: false)
-  Image.update(id, tag: true)
+  month = params['month'].length == 1? '0'+params['month'] : params['month']
+  Image.where('month = ?', month).update_all(tag: false)
+  Image.update(params['id'], tag: true)
   'success'.to_json  
 end
 
