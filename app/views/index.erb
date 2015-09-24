@@ -104,10 +104,6 @@
     $('#add-instagram').delegate('.instagram-image', 'click', function(){
       $(this).toggleClass('selected-image');
     });
-    $('.photo').click(function(){
-      var imageId = $(this).attr('data-imageID');  
-      $("#myModal-"+imageId).modal('show');
-    });
 
 
     $('.instagram-upload').click(function(){
