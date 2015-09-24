@@ -11,8 +11,9 @@
   <div class='navbar-collapse collapse'>
     <ul class='nav navbar-nav navbar-right'>
       <li><a href='/'>Home</a></li>
+      <% if login? %>
       <li><a href='#' id="edit-images">Edit</a></li>
-      <li><a href='#about'>About</a></li>
+      <% end %>
     </ul>
   </div>
 </nav>
@@ -22,17 +23,15 @@
   <div class="col-xs-12 col-sm-6 col-xl-2 col-md-3 photo-main-box">
     <div data-month=<%=image.month%> id=<%= image.month %> data-imageID=<%=image.id%> class="photo">
       <% if(image.tag) %>
-      <span class="glyphicon glyphicon-check preferences" aria-hidden="true" style="position: absolute; top: 10px; right: 10px; color: green; font-size: 15px;"></span>
+      <span class="glyphicon glyphicon-check preferences hidden" aria-hidden="true" style="position: absolute; top: 10px; right: 10px; color: green; font-size: 15px;"></span>
       <% else %>
-      <span class="glyphicon glyphicon-plus preferences" onclick="makeImgPrimary(<%= image.id%>, <%= image.month %>);" id="add-primary-tag" aria-hidden="true" style="position: absolute; top: 10px; right: 10px; color: red; font-size: 15px;"></span>
+      <span class="glyphicon glyphicon-plus preferences hidden" onclick="makeImgPrimary(<%= image.id%>, <%= image.month %>);" id="add-primary-tag" aria-hidden="true" style="position: absolute; top: 10px; right: 10px; color: red; font-size: 15px;"></span>
       <% end %>
-      <span class="glyphicon glyphicon-remove preferences" onclick="deleteimg(<%= image.id%>);" aria-hidden="true" style="position: absolute; top: 260px; right: 10px; color: red; font-size: 15px;"></span>
+      <!-- <span class="glyphicon glyphicon-remove preferences" onclick="deleteimg(<%= image.id%>);" aria-hidden="true" style="position: absolute; top: 260px; right: 10px; color: red; font-size: 15px;"></span> -->
       <img class="visible-xs visible-sm" src=<%= image.url %>>
       <img class="visible-md visible-lg" src=<%= image.lowres %>>
       <div class="image-date">
-        <p><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %></p>
-
-
+        <p class="image-details" data-id="<%=image.id%>" contenteditable="false"><%= Date::MONTHNAMES[image.month.to_i] %> <%= image.day %></p>
       </div>
     </div>
   </div>
@@ -72,6 +71,9 @@
     </div>
   </div>
 </div>
+<div style="text-align: center;">
+  <button class="btn btn-default hidden" id="save-text">Save</button>
+</div>
 
 <script>
   function makeImgPrimary(id, month){
@@ -99,8 +101,43 @@
   }
 
   $(document).ready(function(){
+
+    $('#save-text').click(function(){
+      var elements = document.getElementsByClassName("image-details");
+      var data = [];
+      for(var i=0; i<elements.length; i++) {
+          var element = [];
+          element.push(elements[i].getAttribute('data-id'));
+          element.push(elements[i].innerHTML);
+          data.push(element);
+      }
+      var request = $.ajax({
+        url: '/updateinfo',
+        type: "POST",
+        data: { data : data },
+        dataType:'json'
+      });
+      request.done(function(msg) {
+        location.reload();
+      }); 
+    });
+
     $('#edit-images').click(function(){
       $('.preferences').toggleClass('hidden'); 
+      $('#save-text').toggleClass('hidden'); 
+
     });
+
+    $( "#edit-images" ).click(function() {
+        var value = $('.image-details').attr('contenteditable');
+
+        if (value == 'false') {
+            $('.image-details').attr('contenteditable','true');
+        }
+        else {
+            $('.image-details').attr('contenteditable','false');
+        }
+    });
+
   });
 </script>

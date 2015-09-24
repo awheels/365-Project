@@ -64,10 +64,10 @@ get '/' do
   erb :index
 end
 
-# get '/users/logout' do
-#   session.clear
-#   redirect '/'
-# end
+get '/users/logout' do
+  session.clear
+  redirect '/'
+end
 
 get '/users/login' do
   @login_error = false
@@ -84,7 +84,7 @@ post '/login' do
       redirect '/'
     else
       @login_error = true
-      erb :'users/login'
+      erb :'login'
     end
   else
     @user = User.new
@@ -94,7 +94,7 @@ post '/login' do
 end
 
 get '/gallery/:year-:month' do
-  @images = Image.where("year = ? AND month = ? AND deleted != ?", params['year'], params['month'], true).order('date ASC')
+  @images = Image.where("year = ? AND month = ? AND deleted != ?", params['year'], params['month'], true).order('day ASC')
   erb :monthgallery
 end
 
@@ -167,9 +167,20 @@ post '/set_primary' do
   'success'.to_json  
 end
 
-post '/deleteimg' do
-  id = params['id']
-  Image.update(id, deleted: true)
+# post '/deleteimg' do
+#   id = params['id']
+#   Image.update(id, deleted: true)
+#   'success'.to_json  
+# end
+
+post '/updateinfo' do
+  params['data'].each do |image|
+    results = image[1][1].split
+    month = Date::MONTHNAMES.index(results[0]).to_s
+    month = month.length == 1? '0'+month : month
+    day = results[1].length == 1? '0'+results[1] : results[1]
+    Image.update(image[1][0], month: month, day: day)
+  end
   'success'.to_json  
 end
 
