@@ -64,12 +64,12 @@ get '/' do
   erb :index
 end
 
-get '/users/logout' do
+get '/logout' do
   session.clear
   redirect '/'
 end
 
-get '/users/login' do
+get '/login' do
   @login_error = false
   @user = User.new
   @message = " "
@@ -83,6 +83,7 @@ post '/login' do
       session[:id] = @user[:id]
       redirect '/'
     else
+      @user = User.new
       @login_error = true
       erb :'login'
     end
